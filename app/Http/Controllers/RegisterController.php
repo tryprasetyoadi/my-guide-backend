@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class RegisterController extends BaseController
 {
 
+    public function me()
+    {
+        $user = auth('sanctum')->user();
+        return $this->sendResponse(new UserResource($user), 'Get user successfully!');
+    }
+
     public function register(Request $request)
     {
 
